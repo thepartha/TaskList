@@ -30,14 +30,17 @@ class TaskViewController: UIViewController {
         topView.layer.shadowRadius = 15
     }
     
-
+    @IBAction func addTask(_ sender: Any) {
+        performSegue(withIdentifier: "addTask", sender: self)
+    }
+    
 }
 
 
 extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

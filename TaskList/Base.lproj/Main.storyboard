@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpI-oG-r2n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpI-oG-r2n">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -69,6 +69,7 @@
                                 <constraints>
                                     <constraint firstItem="kIn-tA-nON" firstAttribute="top" secondItem="Cvt-Ye-EXG" secondAttribute="bottom" constant="24" id="DlF-MR-2oK"/>
                                     <constraint firstAttribute="trailing" secondItem="kIn-tA-nON" secondAttribute="trailing" constant="30" id="XGB-wD-AEu"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Cvt-Ye-EXG" secondAttribute="trailing" constant="20" symbolic="YES" id="Y9D-K3-kgW"/>
                                     <constraint firstAttribute="height" constant="174" id="Zkw-bz-k96"/>
                                     <constraint firstItem="Cvt-Ye-EXG" firstAttribute="top" secondItem="jGO-ZC-IoM" secondAttribute="top" constant="52" id="f66-8u-adF"/>
                                     <constraint firstItem="kIn-tA-nON" firstAttribute="leading" secondItem="jGO-ZC-IoM" secondAttribute="leading" constant="30" id="fPi-PK-GOB"/>
@@ -78,9 +79,49 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ams-50-OUA">
                                 <rect key="frame" x="0.0" y="802" width="414" height="94"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fGj-ti-Q9n">
+                                        <rect key="frame" x="26" y="33.5" width="84" height="27"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid Icon" translatesAutoresizingMaskIntoConstraints="NO" id="vGd-u1-etw">
+                                                <rect key="frame" x="0.0" y="0.0" width="27" height="27"/>
+                                            </imageView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="List Icon" translatesAutoresizingMaskIntoConstraints="NO" id="txd-Dg-lOr">
+                                                <rect key="frame" x="52" y="0.0" width="32" height="27"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="27" id="aqR-4L-IRc"/>
+                                        </constraints>
+                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddIcon" translatesAutoresizingMaskIntoConstraints="NO" id="rAr-9B-heU">
+                                        <rect key="frame" x="334" y="24" width="46" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="IAU-fd-hb8"/>
+                                            <constraint firstAttribute="width" constant="46" id="Wcb-Rr-TZp"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugm-Mw-IR2">
+                                        <rect key="frame" x="332" y="22" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="606-Mu-3Q2"/>
+                                            <constraint firstAttribute="width" constant="50" id="OyU-5O-2ot"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="addTask:" destination="XpI-oG-r2n" eventType="touchUpInside" id="v7O-6W-3OH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="94" id="0yA-1R-TjK"/>
+                                    <constraint firstItem="rAr-9B-heU" firstAttribute="centerY" secondItem="Ams-50-OUA" secondAttribute="centerY" id="NcS-N5-Ycf"/>
+                                    <constraint firstAttribute="trailing" secondItem="rAr-9B-heU" secondAttribute="trailing" constant="34" id="So8-tz-X32"/>
+                                    <constraint firstAttribute="trailing" secondItem="ugm-Mw-IR2" secondAttribute="trailing" constant="32" id="WAS-u9-Fnf"/>
+                                    <constraint firstItem="ugm-Mw-IR2" firstAttribute="centerY" secondItem="Ams-50-OUA" secondAttribute="centerY" id="cjC-NW-f3Y"/>
+                                    <constraint firstItem="fGj-ti-Q9n" firstAttribute="centerY" secondItem="Ams-50-OUA" secondAttribute="centerY" id="kpM-sE-bNT"/>
+                                    <constraint firstItem="fGj-ti-Q9n" firstAttribute="leading" secondItem="Ams-50-OUA" secondAttribute="leading" constant="26" id="s70-yf-nbB"/>
+                                    <constraint firstItem="rAr-9B-heU" firstAttribute="top" secondItem="Ams-50-OUA" secondAttribute="top" constant="24" id="wka-ed-kyf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -103,11 +144,49 @@
                         <outlet property="bottomView" destination="Ams-50-OUA" id="tlI-jF-soE"/>
                         <outlet property="tableView" destination="q0a-lw-h0x" id="wMN-zs-VKl"/>
                         <outlet property="topView" destination="jGO-ZC-IoM" id="c5g-SH-N9o"/>
+                        <segue destination="7gA-Jv-CDy" kind="show" identifier="addTask" id="pJ0-ti-wl8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBY-cq-Mes" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="913.04347826086962" y="158.70535714285714"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="rl8-81-O25">
+            <objects>
+                <viewController id="7gA-Jv-CDy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cda-E7-cds">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" placeholder="Add Task Details here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kA4-0G-LlI">
+                                <rect key="frame" x="20" y="63" width="374" height="136"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="136" id="64O-9G-Wwl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.95686274509803915" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kA4-0G-LlI" firstAttribute="leading" secondItem="NbQ-dR-ZA9" secondAttribute="leading" constant="20" id="4l8-6G-Cdg"/>
+                            <constraint firstItem="NbQ-dR-ZA9" firstAttribute="trailing" secondItem="kA4-0G-LlI" secondAttribute="trailing" constant="20" id="OP3-iZ-DhC"/>
+                            <constraint firstItem="kA4-0G-LlI" firstAttribute="top" secondItem="NbQ-dR-ZA9" secondAttribute="top" constant="63" id="jWJ-LJ-fwT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NbQ-dR-ZA9"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PpR-zZ-sWq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="24Q-of-knN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628.985507246377" y="166.74107142857142"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="AddIcon" width="46" height="46"/>
+        <image name="Grid Icon" width="27" height="27"/>
+        <image name="List Icon" width="32" height="27"/>
+    </resources>
 </document>

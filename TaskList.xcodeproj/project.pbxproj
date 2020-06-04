@@ -15,6 +15,10 @@
 		B2931D8E24886F5C006EBB87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2931D8C24886F5C006EBB87 /* LaunchScreen.storyboard */; };
 		B2931D9724887E55006EBB87 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2931D9524887E55006EBB87 /* TaskTableViewCell.swift */; };
 		B2931D9824887E55006EBB87 /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2931D9624887E55006EBB87 /* TaskTableViewCell.xib */; };
+		B2E81CEB2488A88000E181EC /* TextField-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E81CEA2488A88000E181EC /* TextField-Extension.swift */; };
+		B2E81CED2488AA1300E181EC /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E81CEC2488AA1300E181EC /* Task.swift */; };
+		B2E81CEF2488AA5700E181EC /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E81CEE2488AA5700E181EC /* TaskManager.swift */; };
+		B2E81CF12488AB0000E181EC /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E81CF02488AB0000E181EC /* AddTaskViewController.swift */; };
 		FE175E5E2026306CE4576EEC /* Pods_TaskList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDA5F556188F46C34260F825 /* Pods_TaskList.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +34,10 @@
 		B2931D8F24886F5C006EBB87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2931D9524887E55006EBB87 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		B2931D9624887E55006EBB87 /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		B2E81CEA2488A88000E181EC /* TextField-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField-Extension.swift"; sourceTree = "<group>"; };
+		B2E81CEC2488AA1300E181EC /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		B2E81CEE2488AA5700E181EC /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		B2E81CF02488AB0000E181EC /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		B4CBD278482C5DE2067094DC /* Pods-TaskList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskList.release.xcconfig"; path = "Target Support Files/Pods-TaskList/Pods-TaskList.release.xcconfig"; sourceTree = "<group>"; };
 		CDA5F556188F46C34260F825 /* Pods_TaskList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -75,6 +83,10 @@
 		B2931D8024886F5A006EBB87 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				B2E81CEA2488A88000E181EC /* TextField-Extension.swift */,
+				B2E81CEC2488AA1300E181EC /* Task.swift */,
+				B2E81CEE2488AA5700E181EC /* TaskManager.swift */,
+				B2E81CF02488AB0000E181EC /* AddTaskViewController.swift */,
 				B2931D8124886F5A006EBB87 /* AppDelegate.swift */,
 				B2931D8324886F5A006EBB87 /* SceneDelegate.swift */,
 				B2931D8524886F5A006EBB87 /* TaskViewController.swift */,
@@ -214,9 +226,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2931D9724887E55006EBB87 /* TaskTableViewCell.swift in Sources */,
+				B2E81CF12488AB0000E181EC /* AddTaskViewController.swift in Sources */,
 				B2931D8624886F5A006EBB87 /* TaskViewController.swift in Sources */,
 				B2931D8224886F5A006EBB87 /* AppDelegate.swift in Sources */,
 				B2931D8424886F5A006EBB87 /* SceneDelegate.swift in Sources */,
+				B2E81CED2488AA1300E181EC /* Task.swift in Sources */,
+				B2E81CEF2488AA5700E181EC /* TaskManager.swift in Sources */,
+				B2E81CEB2488A88000E181EC /* TextField-Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
