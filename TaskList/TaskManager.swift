@@ -11,7 +11,7 @@ import Foundation
 class TaskManager {
     var tasks: [Task] = []
     
-    func AddTask(taskName: String) {
+    func addTask(taskName: String) {
         let newTask = Task(taskTitle: taskName, taskDate: Date(), taskStatus: false)
         tasks.append(newTask)
     }

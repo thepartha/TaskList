@@ -151,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="913.04347826086962" y="158.70535714285714"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Task View Controller-->
         <scene sceneID="rl8-81-O25">
             <objects>
-                <viewController id="7gA-Jv-CDy" sceneMemberID="viewController">
+                <viewController id="7gA-Jv-CDy" customClass="AddTaskViewController" customModule="TaskList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cda-E7-cds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,16 +168,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YNs-E4-nj5">
+                                <rect key="frame" x="175.5" y="270" width="63" height="30"/>
+                                <state key="normal" title="Add Task"/>
+                                <connections>
+                                    <action selector="addTask:" destination="7gA-Jv-CDy" eventType="touchUpInside" id="057-mZ-Pif"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95686274509803915" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="kA4-0G-LlI" firstAttribute="leading" secondItem="NbQ-dR-ZA9" secondAttribute="leading" constant="20" id="4l8-6G-Cdg"/>
+                            <constraint firstItem="YNs-E4-nj5" firstAttribute="top" secondItem="kA4-0G-LlI" secondAttribute="bottom" constant="71" id="Nyc-Zu-c0N"/>
                             <constraint firstItem="NbQ-dR-ZA9" firstAttribute="trailing" secondItem="kA4-0G-LlI" secondAttribute="trailing" constant="20" id="OP3-iZ-DhC"/>
+                            <constraint firstItem="YNs-E4-nj5" firstAttribute="centerX" secondItem="cda-E7-cds" secondAttribute="centerX" id="c8J-Kh-m6u"/>
                             <constraint firstItem="kA4-0G-LlI" firstAttribute="top" secondItem="NbQ-dR-ZA9" secondAttribute="top" constant="63" id="jWJ-LJ-fwT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NbQ-dR-ZA9"/>
                     </view>
                     <navigationItem key="navigationItem" id="PpR-zZ-sWq"/>
+                    <connections>
+                        <outlet property="taskTextField" destination="kA4-0G-LlI" id="hQs-df-Xww"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24Q-of-knN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

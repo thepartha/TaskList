@@ -6,11 +6,24 @@
 //  Copyright © 2020 Partha Sarathy. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class AddTaskViewController: UIViewController {
     
-      
+    @IBOutlet var taskTextField: UITextField!
+    
+    @IBAction func addTask(_ sender: Any) {
+        if let taskText = taskTextField.text {
+            print(taskText)
+            
+        }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
     
     
 }
