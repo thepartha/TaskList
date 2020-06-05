@@ -17,7 +17,19 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
         tasks[indexPath!.row].taskStatus = !currentStatus
         let newStatus = tasks[indexPath!.row].taskStatus
         if newStatus {
-            cell.checkBox.image = UIImage(named: "Selected")
+            switch currentCollection {
+                 case "tasks":
+                    cell.checkBox.image = UIImage(named: "Selected")
+                 case "personal" :
+                     cell.checkBox.image = UIImage(named: "selected_personal")
+                 case "other":
+                     cell.checkBox.image = UIImage(named: "selected_other")
+                 case "work" :
+                    cell.checkBox.image = UIImage(named: "selected_work")
+                 default:
+                     return
+                 }
+            
         } else {
             cell.checkBox.image = UIImage(named: "Rectangle")
         }
@@ -32,6 +44,8 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var bottomView: UIView!
     @IBOutlet var topView: UIView!
+    @IBOutlet var gridIcon: UIImageView!
+    @IBOutlet var listIcon: UIImageView!
     
     var tasks: [Task] = []
     var workTasks: [Task] = []
@@ -93,6 +107,8 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
         bottomView.layer.cornerRadius = 26
         topNavButtons = [allTasksButton,workTasksButton,personalTasksButton,otherButtonTasks]
         allTasksButton.isSelected = true
+        listIcon.image = UIImage(named: "List_Icon_active")
+        gridIcon.image = UIImage(named: "Grid_Icon")
         // Do any additional setup after loading the view.
     }
     

@@ -22,10 +22,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="RNH-h3-Opp">
                                         <rect key="frame" x="26" y="33.666666666666629" width="84" height="27"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid Icon" translatesAutoresizingMaskIntoConstraints="NO" id="lQt-Ae-wqq">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="lQt-Ae-wqq">
                                                 <rect key="frame" x="0.0" y="0.0" width="27" height="27"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="List Icon" translatesAutoresizingMaskIntoConstraints="NO" id="731-hT-bv3">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="List_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="731-hT-bv3">
                                                 <rect key="frame" x="52" y="0.0" width="32" height="27"/>
                                             </imageView>
                                         </subviews>
@@ -33,12 +33,24 @@
                                             <constraint firstAttribute="height" constant="27" id="ltr-iK-SLi"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMe-ZF-BaY">
+                                        <rect key="frame" x="64" y="8" width="61" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="LUc-bY-cjh"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="XpI-oG-r2n" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="8io-ul-h1z"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="RNH-h3-Opp" firstAttribute="top" secondItem="nEC-a9-oBX" secondAttribute="top" constant="33.670000000000002" id="5xl-aY-QOl"/>
+                                    <constraint firstItem="VMe-ZF-BaY" firstAttribute="top" secondItem="nEC-a9-oBX" secondAttribute="top" constant="8" id="6TU-Ab-qXf"/>
                                     <constraint firstAttribute="bottom" secondItem="RNH-h3-Opp" secondAttribute="bottom" constant="33.329999999999998" id="Ad4-PY-dXw"/>
+                                    <constraint firstAttribute="bottom" secondItem="VMe-ZF-BaY" secondAttribute="bottom" constant="16" id="PdR-FM-zIF"/>
                                     <constraint firstItem="RNH-h3-Opp" firstAttribute="leading" secondItem="nEC-a9-oBX" secondAttribute="leading" constant="26" id="Qyj-fv-BY9"/>
+                                    <constraint firstItem="VMe-ZF-BaY" firstAttribute="leading" secondItem="nEC-a9-oBX" secondAttribute="leading" constant="64" id="sIf-18-bGl"/>
                                     <constraint firstAttribute="height" constant="94" id="y64-Rb-8Dx"/>
                                 </constraints>
                             </view>
@@ -206,6 +218,8 @@
                         <viewLayoutGuide key="safeArea" id="NVK-Q6-ahO"/>
                     </view>
                     <connections>
+                        <outlet property="gridIcon" destination="lQt-Ae-wqq" id="MQ6-Mb-OCj"/>
+                        <outlet property="listIcon" destination="731-hT-bv3" id="cPN-0k-BGT"/>
                         <outlet property="otherCountLabel" destination="fK0-45-Nnj" id="xvi-Sp-Liz"/>
                         <outlet property="personalCountLabel" destination="FBe-hT-fEd" id="xhV-Qz-jzG"/>
                         <outlet property="tasksCountLabel" destination="bLp-iM-EVE" id="YO5-L1-ubh"/>
@@ -318,10 +332,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="fGj-ti-Q9n">
                                         <rect key="frame" x="26" y="33.666666666666629" width="84" height="27"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid Icon" translatesAutoresizingMaskIntoConstraints="NO" id="vGd-u1-etw">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grid_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="vGd-u1-etw">
                                                 <rect key="frame" x="0.0" y="0.0" width="27" height="27"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="List Icon" translatesAutoresizingMaskIntoConstraints="NO" id="txd-Dg-lOr">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="List_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="txd-Dg-lOr">
                                                 <rect key="frame" x="52" y="0.0" width="32" height="27"/>
                                             </imageView>
                                         </subviews>
@@ -355,25 +369,16 @@
                                             <action selector="overviewTapped:" destination="XpI-oG-r2n" eventType="touchUpInside" id="6FY-Ft-Aj9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBS-qo-dBJ">
-                                        <rect key="frame" x="66" y="30" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="46" id="4R6-sc-fmg"/>
-                                        </constraints>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="aBS-qo-dBJ" firstAttribute="top" secondItem="Ams-50-OUA" secondAttribute="top" constant="30" id="Bil-su-6pY"/>
                                     <constraint firstItem="rAr-9B-heU" firstAttribute="centerY" secondItem="Ams-50-OUA" secondAttribute="centerY" id="NcS-N5-Ycf"/>
                                     <constraint firstAttribute="trailing" secondItem="rAr-9B-heU" secondAttribute="trailing" constant="34" id="So8-tz-X32"/>
                                     <constraint firstAttribute="trailing" secondItem="ugm-Mw-IR2" secondAttribute="trailing" constant="32" id="WAS-u9-Fnf"/>
                                     <constraint firstItem="XEU-vd-uti" firstAttribute="top" secondItem="Ams-50-OUA" secondAttribute="top" constant="20" id="cfW-to-Bu9"/>
                                     <constraint firstItem="ugm-Mw-IR2" firstAttribute="centerY" secondItem="Ams-50-OUA" secondAttribute="centerY" id="cjC-NW-f3Y"/>
-                                    <constraint firstItem="aBS-qo-dBJ" firstAttribute="leading" secondItem="XEU-vd-uti" secondAttribute="trailing" id="hwr-tC-bth"/>
                                     <constraint firstAttribute="bottom" secondItem="XEU-vd-uti" secondAttribute="bottom" constant="20" id="iUt-dJ-pBA"/>
                                     <constraint firstItem="fGj-ti-Q9n" firstAttribute="centerY" secondItem="Ams-50-OUA" secondAttribute="centerY" id="kpM-sE-bNT"/>
-                                    <constraint firstAttribute="bottom" secondItem="aBS-qo-dBJ" secondAttribute="bottom" constant="34" id="n4x-rp-pws"/>
                                     <constraint firstItem="XEU-vd-uti" firstAttribute="leading" secondItem="Ams-50-OUA" secondAttribute="leading" constant="20" id="ngj-zE-mTu"/>
                                     <constraint firstItem="fGj-ti-Q9n" firstAttribute="leading" secondItem="Ams-50-OUA" secondAttribute="leading" constant="26" id="s70-yf-nbB"/>
                                     <constraint firstItem="rAr-9B-heU" firstAttribute="top" secondItem="Ams-50-OUA" secondAttribute="top" constant="24" id="wka-ed-kyf"/>
@@ -399,6 +404,8 @@
                         <outlet property="addIcon" destination="rAr-9B-heU" id="zu0-yx-CJM"/>
                         <outlet property="allTasksButton" destination="x4D-gH-NQt" id="yO1-PI-DhL"/>
                         <outlet property="bottomView" destination="Ams-50-OUA" id="tlI-jF-soE"/>
+                        <outlet property="gridIcon" destination="vGd-u1-etw" id="eo5-vm-SBl"/>
+                        <outlet property="listIcon" destination="txd-Dg-lOr" id="G0A-j3-Ehz"/>
                         <outlet property="otherButtonTasks" destination="yOw-sq-8Cl" id="R2b-Fo-Sgd"/>
                         <outlet property="personalTasksButton" destination="1l7-qL-twb" id="XnP-v2-hwf"/>
                         <outlet property="tableView" destination="q0a-lw-h0x" id="wMN-zs-VKl"/>
@@ -406,7 +413,7 @@
                         <outlet property="topView" destination="jGO-ZC-IoM" id="c5g-SH-N9o"/>
                         <outlet property="workTasksButton" destination="Dva-dN-Y25" id="Wkg-9c-aey"/>
                         <segue destination="7gA-Jv-CDy" kind="show" identifier="addTask" id="pJ0-ti-wl8"/>
-                        <segue destination="nYD-8r-7LY" kind="presentation" identifier="overViewSegue" modalPresentationStyle="fullScreen" id="0FQ-iP-5Sn"/>
+                        <segue destination="nYD-8r-7LY" kind="presentation" identifier="overViewSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="0FQ-iP-5Sn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MBY-cq-Mes" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -460,8 +467,8 @@
     </scenes>
     <resources>
         <image name="AddIcon" width="46" height="46"/>
-        <image name="Grid Icon" width="27" height="27"/>
-        <image name="List Icon" width="32" height="27"/>
+        <image name="Grid_Icon" width="27" height="27"/>
+        <image name="List_Icon" width="32" height="27"/>
         <namedColor name="other-color">
             <color red="0.98400002717971802" green="0.18400000035762787" blue="0.20399999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

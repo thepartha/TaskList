@@ -15,6 +15,8 @@ class OverviewViewController: UIViewController {
     var otherTasksCount: Int = 0
     var personalTasksCount: Int = 0
     
+    @IBOutlet var gridIcon: UIImageView!
+    @IBOutlet var listIcon: UIImageView!
     @IBOutlet var tasksCountLabel: UILabel!
     @IBOutlet var otherCountLabel: UILabel!
     @IBOutlet var personalCountLabel: UILabel!
@@ -28,6 +30,8 @@ class OverviewViewController: UIViewController {
         personalCountLabel.text = String(personalTasksCount)
         workCountLabel.text = String(workTasksCount)
        
+        listIcon.image = UIImage(named: "List_Icon")
+        gridIcon.image = UIImage(named: "Grid_Icon_active")
     }
     
 }
