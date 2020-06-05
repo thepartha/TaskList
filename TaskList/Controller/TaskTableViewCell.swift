@@ -8,9 +8,21 @@
 
 import UIKit
 
+protocol taskTableViewCellDelegate {
+    func taskChecked(cell: TaskTableViewCell)
+}
+
+
 class TaskTableViewCell: UITableViewCell {
 
     @IBOutlet var cellView: UIView!
+    @IBOutlet var taskLabel: UILabel!
+    @IBOutlet var checkBox: UIImageView!
+    var delegate: taskTableViewCellDelegate!
+    @IBAction func checkBoxTapped(_ sender: Any) {
+        delegate.taskChecked(cell: self)
+        
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

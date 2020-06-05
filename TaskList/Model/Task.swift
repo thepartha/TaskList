@@ -10,6 +10,6 @@ import Foundation
 
 struct Task {
     var taskTitle: String
-    var taskDate: Date
     var taskStatus: Bool
+    var id: String?
 }
