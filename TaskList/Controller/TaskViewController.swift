@@ -21,9 +21,11 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
         } else {
             cell.checkBox.image = UIImage(named: "Rectangle")
         }
-        
     }
     
+    @IBAction func overviewTapped(_ sender: Any) {
+        performSegue(withIdentifier: "overViewSegue", sender: self)
+    }
     
     @IBOutlet var todayLabel: UILabel!
     @IBOutlet var addIcon: UIImageView!
@@ -103,8 +105,21 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let viewController = segue.destination as? AddTaskViewController
-        viewController?.delegate = self
+        switch segue.identifier {
+        case "overViewSegue":
+            let viewController = segue.destination as? OverviewViewController
+            viewController?.otherTasksCount = otherTasks.count
+            viewController?.personalTasksCount = personalTasks.count
+            viewController?.workTasksCount = workTasks.count
+            viewController?.tasksCount = tasks.count
+        case "addTask":
+            let viewController = segue.destination as? AddTaskViewController
+            viewController?.delegate = self
+        default:
+            return
+        }
+        
+        
     }
     
     @IBAction func addTask(_ sender: Any) {
@@ -183,9 +198,6 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
             }
         }
     }
-    
-   
-    
 }
 
 
