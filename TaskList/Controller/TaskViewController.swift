@@ -15,27 +15,36 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
         let indexPath = tableView.indexPath(for: cell)
         let currentStatus = tasks[indexPath!.row].taskStatus
         tasks[indexPath!.row].taskStatus = !currentStatus
+        let task = tasks[indexPath!.row]
         if let id  = tasks[indexPath!.row].id {
-            db.collection("tasks").document(id).setData([ "taskStatus": tasks[indexPath!.row].taskStatus], merge: true)
-        }
-        if let task = tasks[indexPath!.row] {
-            if tasks[indexPath!.row].taskStatus {
-                db.collection("completed").addDocument(data: "taskTitle" : taskname, "taskDate" : Date().timeIntervalSince1970, "taskStatus" : false, "category") { (error) in
-                    <#code#>
-                }
-            } else {
-                
-            }
-        }
+            //db.collection("tasks").document(id).setData([ "taskStatus": tasks[indexPath!.row].taskStatus], merge: true)
         
+        if tasks[indexPath!.row].taskStatus {
+            db.collection("completed").addDocument(data: ["taskStatus" : task.taskStatus, "taskTitle": task.taskTitle, "taskDate" : Date().timeIntervalSince1970, "category" : currentCollection]) { (error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    self.db.collection("tasks").document(id).delete { (error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            self.tasks.remove(at: indexPath!.row)
+                        }
+                    }
+                }
+            }
+        } else {
+            
+        }
+        }
         completedTasks.append(tasks[indexPath!.row])
-        //  tasks.remove(at: indexPath!.row)
-        //   print("\(indexPath!.row) \(indexPath!.section) outside")
-        //        if let indexPath = indexPath {
-        //              print("\(indexPath.row) \(indexPath.section)inside")
-        //            tableView.deleteRows(at: [indexPath], with: .fade)
-        //
-        //        }
+      //  tasks.remove(at: indexPath!.row)
+     //   print("\(indexPath!.row) \(indexPath!.section) outside")
+//        if let indexPath = indexPath {
+//              print("\(indexPath.row) \(indexPath.section)inside")
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//        }
         countByCategory()
         tableView.reloadData()
         
@@ -216,8 +225,29 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
                     }
                 }
             }
-            self.tableView.reloadData()
+           
         }
+        db.collection("completed").whereField("category", isEqualTo: currentCollection).order(by: "taskDate").addSnapshotListener { (snapshot, error) in
+            self.completedTasks = []
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let snapshotDocuments = snapshot?.documents {
+                    for document in snapshotDocuments {
+                        let data = document.data()
+                           if let taskTitle = data["taskTitle"] as? String,
+                          let taskStatus = data["taskStatus"] as? Bool,
+                            let taskCategory = data["category"] as? String {
+                            let task = Task(taskTitle: taskTitle, taskStatus: taskStatus, id: document.documentID, category: taskCategory)
+                            self.completedTasks.append(task)
+                        }
+                    }
+                }
+            }
+        }
+        
+        self.tableView.reloadData()
+        
     }
     
     func countByCategory(){
@@ -336,10 +366,10 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskTableViewCell;
         cell.delegate = self
         if indexPath.section == 0 {
-            
-            cell.taskLabel.text = tasks[indexPath.row].taskTitle
-            cell.checkBox.image = UIImage(named: "Rectangle")
-            
+          
+                cell.taskLabel.text = tasks[indexPath.row].taskTitle
+                cell.checkBox.image = UIImage(named: "Rectangle")
+
         } else {
             cell.taskLabel.text = completedTasks[indexPath.row].taskTitle
             if completedTasks[indexPath.row].taskStatus{
