@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B203E5FA248D864B007F0292 /* AddActionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B203E5F9248D864B007F0292 /* AddActionsViewController.swift */; };
 		B225717C248A7DB100727DBB /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225717B248A7DB100727DBB /* OverviewViewController.swift */; };
 		B22834C7248C564C00F2A271 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22834C6248C564C00F2A271 /* TestTableViewController.swift */; };
 		B22834CF248D088C00F2A271 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22834CE248D088C00F2A271 /* TestView.xib */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		86A9998F5D729669EB6AF1CB /* Pods-TaskList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskList.debug.xcconfig"; path = "Target Support Files/Pods-TaskList/Pods-TaskList.debug.xcconfig"; sourceTree = "<group>"; };
+		B203E5F9248D864B007F0292 /* AddActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActionsViewController.swift; sourceTree = "<group>"; };
 		B225717B248A7DB100727DBB /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OverviewViewController.swift; path = TaskList/Controller/OverviewViewController.swift; sourceTree = SOURCE_ROOT; };
 		B22834C6248C564C00F2A271 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestTableViewController.swift; path = TaskList/Controller/TestTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		B22834CE248D088C00F2A271 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		B2931D9D2489C42B006EBB87 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B203E5F9248D864B007F0292 /* AddActionsViewController.swift */,
 				B22834C6248C564C00F2A271 /* TestTableViewController.swift */,
 				B225717B248A7DB100727DBB /* OverviewViewController.swift */,
 				B2E81CF02488AB0000E181EC /* AddTaskViewController.swift */,
@@ -269,6 +272,7 @@
 				B2931D8224886F5A006EBB87 /* AppDelegate.swift in Sources */,
 				B2931D8424886F5A006EBB87 /* SceneDelegate.swift in Sources */,
 				B22834C7248C564C00F2A271 /* TestTableViewController.swift in Sources */,
+				B203E5FA248D864B007F0292 /* AddActionsViewController.swift in Sources */,
 				B22834D1248D097900F2A271 /* TestView.swift in Sources */,
 				B225717C248A7DB100727DBB /* OverviewViewController.swift in Sources */,
 				B2E81CED2488AA1300E181EC /* Task.swift in Sources */,

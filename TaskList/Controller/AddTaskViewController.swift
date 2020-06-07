@@ -23,21 +23,27 @@ class AddTaskViewController: UIViewController {
     @IBOutlet var duedate_icon: UIImageView!
     @IBOutlet var duedate_label: UILabel!
     
+    @IBOutlet var remainderContainerView: UIView!
+    
     @IBAction func setReminderTapped(_ sender: Any) {
-        let alertController = UIAlertController.init(title: "Reminder", message: "Set Reminder", preferredStyle: .actionSheet)
-        let todayAction = UIAlertAction(title: "Today", style: .default) { (action) in
-            print(action)
-        }
-        let tomorrowAction = UIAlertAction(title: "Tomorrow", style: .default) { (action) in
-            print(action)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-            print(action)
-        }
-        alertController.addAction(todayAction)
-        alertController.addAction(tomorrowAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
+        
+//        func openNapkins() {
+//          UIView.animate(withDuration: 1.0, delay: 1.2, options: .curveEaseOut, animations: {
+//            var fabricTopFrame = self.fabricTop.frame
+//            fabricTopFrame.origin.y -= fabricTopFrame.size.height
+//            
+//            var fabricBottomFrame = self.fabricBottom.frame
+//            fabricBottomFrame.origin.y += fabricBottomFrame.size.height
+//            
+//            self.fabricTop.frame = fabricTopFrame
+//            self.fabricBottom.frame = fabricBottomFrame
+//          }, completion: { finished in
+//            print("Napkins opened!")
+//          })
+//          
+//        }
+//        
+        remainderContainerView.frame.origin.y -= remainderContainerView.frame.height
     }
     @IBAction func setDuedateTapped(_ sender: Any) {
         
@@ -53,6 +59,16 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //print(remainderContainerView.frame.origin.y)
+       // remainderContainerView.frame.origin.y = 100
+        print(remainderContainerView.frame.origin.y)
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         remainderContainerView.frame.origin.y = 100
+    }
+        
+
     
 }
