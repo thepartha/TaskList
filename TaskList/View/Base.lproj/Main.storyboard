@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpI-oG-r2n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XpI-oG-r2n">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -239,7 +239,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="q0a-lw-h0x">
-                                <rect key="frame" x="0.0" y="174" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="174" width="414" height="632"/>
                                 <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="XpI-oG-r2n" id="eR1-8m-MFH"/>
@@ -403,7 +403,7 @@
                             <constraint firstAttribute="bottom" secondItem="Ams-50-OUA" secondAttribute="bottom" id="3py-f2-bl3"/>
                             <constraint firstItem="jGO-ZC-IoM" firstAttribute="top" secondItem="Zam-iO-de4" secondAttribute="top" id="5lF-DX-UJF"/>
                             <constraint firstItem="jGO-ZC-IoM" firstAttribute="trailing" secondItem="hrv-uF-dD5" secondAttribute="trailing" id="BWh-g1-mzS"/>
-                            <constraint firstAttribute="bottom" secondItem="q0a-lw-h0x" secondAttribute="bottom" id="P2a-3X-Q6L"/>
+                            <constraint firstAttribute="bottom" secondItem="q0a-lw-h0x" secondAttribute="bottom" constant="90" id="P2a-3X-Q6L"/>
                             <constraint firstItem="Ams-50-OUA" firstAttribute="leading" secondItem="hrv-uF-dD5" secondAttribute="leading" id="S3v-ne-Uc3"/>
                             <constraint firstItem="Ams-50-OUA" firstAttribute="trailing" secondItem="hrv-uF-dD5" secondAttribute="trailing" id="TAi-UR-8j7"/>
                             <constraint firstItem="jGO-ZC-IoM" firstAttribute="leading" secondItem="hrv-uF-dD5" secondAttribute="leading" id="bx9-P9-vA7"/>

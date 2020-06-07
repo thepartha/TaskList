@@ -13,38 +13,46 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
     
     func taskChecked(cell: TaskTableViewCell) {
         let indexPath = tableView.indexPath(for: cell)
-        let currentStatus = tasks[indexPath!.row].taskStatus
-        tasks[indexPath!.row].taskStatus = !currentStatus
-        let task = tasks[indexPath!.row]
-        if let id  = tasks[indexPath!.row].id {
-            //db.collection("tasks").document(id).setData([ "taskStatus": tasks[indexPath!.row].taskStatus], merge: true)
-        
-        if tasks[indexPath!.row].taskStatus {
-            db.collection("completed").addDocument(data: ["taskStatus" : task.taskStatus, "taskTitle": task.taskTitle, "taskDate" : Date().timeIntervalSince1970, "category" : currentCollection]) { (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    self.db.collection("tasks").document(id).delete { (error) in
-                        if let error = error {
-                            print(error.localizedDescription)
-                        } else {
-                            self.tasks.remove(at: indexPath!.row)
+        let task: Task!
+        let id: String!
+        if let indexPath = indexPath {
+            if indexPath.section == 0 {
+                    let currentStatus = tasks[indexPath.row].taskStatus
+                    tasks[indexPath.row].taskStatus = !currentStatus
+                    task = tasks[indexPath.row]
+                    id = tasks[indexPath.row].id
+                db.collection("completed").addDocument(data: ["taskStatus" : task.taskStatus, "taskTitle": task.taskTitle, "taskDate" : Date().timeIntervalSince1970, "category" : currentCollection]) { (error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            } else {
+                                self.db.collection("tasks").document(id).delete { (error) in
+                                    if let error = error {
+                                        print(error.localizedDescription)
+                                    } else {
+                                    }
+                                }
+                            }
                         }
-                    }
-                }
+            } else {
+                let currentStatus = completedTasks[indexPath.row].taskStatus
+                completedTasks[indexPath.row].taskStatus = !currentStatus
+                task = completedTasks[indexPath.row]
+                id = completedTasks[indexPath.row].id
+                db.collection("completed").document(id).delete { (error) in
+                          if let error = error {
+                              print(error.localizedDescription)
+                          } else {
+                     
+                              self.db.collection("tasks").addDocument(data: ["taskStatus" : task.taskStatus, "taskTitle": task.taskTitle, "taskDate" : Date().timeIntervalSince1970, "category" : self.currentCollection]) { (error) in
+                                  if let error = error {
+                                      print(error.localizedDescription)
+                                  }
+                              }
+                          }
+                      }
             }
-        } else {
-            
         }
-        }
-        completedTasks.append(tasks[indexPath!.row])
-      //  tasks.remove(at: indexPath!.row)
-     //   print("\(indexPath!.row) \(indexPath!.section) outside")
-//        if let indexPath = indexPath {
-//              print("\(indexPath.row) \(indexPath.section)inside")
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//
-//        }
+
         countByCategory()
         tableView.reloadData()
         
@@ -67,7 +75,6 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
     var completedTasks: [Task] = []
     var currentCollection: String = ""
     
-    var currentTasksCount: Int = 0
     
     var workTasksCount: Int!
     var personalTasksCount: Int!
@@ -127,6 +134,7 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.sectionHeaderHeight = 70
+        
         setupDate()
         currentCollection = "tasks"
         loadTasks(collection: currentCollection)
@@ -204,15 +212,14 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
     
     
     func loadTasks(collection: String){
-        db.collection("tasks").whereField("category", isEqualTo: currentCollection).order(by: "taskDate").addSnapshotListener { (snapshot, error) in
+        db.collection("tasks").whereField("category", isEqualTo: collection).order(by: "taskDate").addSnapshotListener { (snapshot, error) in
             self.tasks = []
-            self.currentTasksCount = 0
             if let error = error {
                 print(error.localizedDescription)
             } else {
                 if let snapshotDocuments = snapshot?.documents {
-                    self.currentTasksCount = snapshotDocuments.count
                     for document in snapshotDocuments{
+                        print(snapshotDocuments.count)
                         let data = document.data()
                         if let taskTitle = data["taskTitle"] as? String,
                             let taskStatus = data["taskStatus"] as? Bool,
@@ -225,9 +232,11 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
                     }
                 }
             }
+            self.tableView.reloadData()
+
            
         }
-        db.collection("completed").whereField("category", isEqualTo: currentCollection).order(by: "taskDate").addSnapshotListener { (snapshot, error) in
+        db.collection("completed").whereField("category", isEqualTo: collection).order(by: "taskDate").addSnapshotListener { (snapshot, error) in
             self.completedTasks = []
             if let error = error {
                 print(error.localizedDescription)
@@ -244,10 +253,9 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
                     }
                 }
             }
+            self.tableView.reloadData()
         }
-        
-        self.tableView.reloadData()
-        
+            
     }
     
     func countByCategory(){
@@ -366,12 +374,20 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskTableViewCell;
         cell.delegate = self
         if indexPath.section == 0 {
-          
-                cell.taskLabel.text = tasks[indexPath.row].taskTitle
+            let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: tasks[indexPath.row].taskTitle)
+            attributeString.removeAttribute(NSAttributedString.Key.strikethroughStyle, range: NSMakeRange(0, attributeString.length))
+            
+                cell.taskLabel.attributedText = attributeString
                 cell.checkBox.image = UIImage(named: "Rectangle")
 
         } else {
-            cell.taskLabel.text = completedTasks[indexPath.row].taskTitle
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: completedTasks[indexPath.row].taskTitle)
+            
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+            
+            cell.taskLabel.attributedText = attributeString
+          //  cell.taskLabel.text = completedTasks[indexPath.row].taskTitle
+            
             if completedTasks[indexPath.row].taskStatus{
                 switch currentCollection {
                 case "tasks":
