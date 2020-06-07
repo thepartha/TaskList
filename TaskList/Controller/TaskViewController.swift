@@ -81,6 +81,10 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
     var otherTasksCount: Int!
     var tasksCount: Int!
     
+    var workTasksPendingCount: Int = 0
+    var personalTasksPendingCount: Int = 0
+    var otherTasksPendingCount: Int = 0
+    var tasksPendingCount: Int = 0
     
     var weekDay: String = ""
     var month: String = ""
@@ -169,6 +173,10 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
             viewController?.personalTasksCount = personalTasksCount
             viewController?.workTasksCount = workTasksCount
             viewController?.tasksCount = tasksCount
+            viewController?.otherTasksPendingCount = otherTasksPendingCount
+            viewController?.personalTasksPendingCount = personalTasksPendingCount
+            viewController?.workTasksPendingCount = workTasksPendingCount
+            viewController?.tasksPendingCount = tasksPendingCount
         case "addTask":
             let viewController = segue.destination as? AddTaskViewController
             viewController?.delegate = self
@@ -285,6 +293,32 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
                 }
             }
         }
+        db.collection("completed").getDocuments { (snapshot, error) in
+                if let error = error{
+                    print(error.localizedDescription)
+                } else {
+                    if let snapshotDocuments = snapshot?.documents {
+                        for docment in snapshotDocuments {
+                            let data = docment.data()
+                            if let taskCategory = data["category"] as? String {
+                                switch taskCategory {
+                                case "tasks":
+                                    self.tasksPendingCount += 1
+                                case "personal" :
+                                    self.personalTasksPendingCount += 1
+                                case "other":
+                                    self.otherTasksPendingCount += 1
+                                case "work" :
+                                    self.workTasksPendingCount += 1
+                                default:
+                                    print("No collected found")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        
         
     }
     

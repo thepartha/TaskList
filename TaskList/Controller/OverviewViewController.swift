@@ -15,6 +15,11 @@ class OverviewViewController: UIViewController {
     var otherTasksCount: Int = 0
     var personalTasksCount: Int = 0
     
+    var tasksPendingCount: Int = 0
+    var workTasksPendingCount: Int = 0
+    var otherTasksPendingCount: Int = 0
+    var personalTasksPendingCount: Int = 0 
+    
     @IBOutlet var gridIcon: UIImageView!
     @IBOutlet var listIcon: UIImageView!
     @IBOutlet var tasksCountLabel: UILabel!
@@ -32,6 +37,11 @@ class OverviewViewController: UIViewController {
        
         listIcon.image = UIImage(named: "List_Icon")
         gridIcon.image = UIImage(named: "Grid_Icon_active")
+        
+        print("Total tasks: \(tasksCount) completed:\(tasksPendingCount)")
+        print("Total work: \(workTasksCount) completed:\(workTasksPendingCount)")
+        print("Total other: \(otherTasksCount) completed:\(otherTasksPendingCount)")
+        print("Total personnal: \(personalTasksCount) completed:\(personalTasksPendingCount)")
     }
     
 }
