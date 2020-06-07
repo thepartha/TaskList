@@ -12,4 +12,5 @@ struct Task {
     var taskTitle: String
     var taskStatus: Bool
     var id: String?
+    var category: String
 }

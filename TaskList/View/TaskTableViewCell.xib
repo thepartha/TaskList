@@ -61,7 +61,7 @@
                 </subviews>
                 <color key="backgroundColor" red="0.95294117649999999" green="0.95686274510000002" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="XTi-Ea-Dgx" secondAttribute="bottom" constant="15" id="7If-tK-50w"/>
+                    <constraint firstAttribute="bottom" secondItem="XTi-Ea-Dgx" secondAttribute="bottom" constant="7" id="7If-tK-50w"/>
                     <constraint firstItem="XTi-Ea-Dgx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ANP-En-Z5M"/>
                     <constraint firstItem="XTi-Ea-Dgx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ZW0-1X-xVO"/>
                     <constraint firstAttribute="trailing" secondItem="XTi-Ea-Dgx" secondAttribute="trailing" constant="20" id="nPK-dm-hfg"/>
