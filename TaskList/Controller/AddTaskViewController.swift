@@ -22,11 +22,22 @@ class AddTaskViewController: UIViewController {
     @IBOutlet var reminder_label: UILabel!
     @IBOutlet var duedate_icon: UIImageView!
     @IBOutlet var duedate_label: UILabel!
-    
+    var backgroundView: UIView!
     @IBOutlet var remainderContainerView: UIView!
     
     @IBAction func setReminderTapped(_ sender: Any) {
-        
+        //self.view.bringSubviewToFront(self.remainderContainerView)
+        //self.backgroundView.alpha = 0.2
+
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            var containerFrame = self.remainderContainerView.frame
+            containerFrame.origin.y -= containerFrame.height
+            
+
+            self.remainderContainerView.frame = containerFrame
+        }) { (finished) in
+            print("animation completed")
+        }
 //        func openNapkins() {
 //          UIView.animate(withDuration: 1.0, delay: 1.2, options: .curveEaseOut, animations: {
 //            var fabricTopFrame = self.fabricTop.frame
@@ -43,7 +54,7 @@ class AddTaskViewController: UIViewController {
 //          
 //        }
 //        
-        remainderContainerView.frame.origin.y -= remainderContainerView.frame.height
+      //  remainderContainerView.frame.origin.y -= remainderContainerView.frame.height
     }
     @IBAction func setDuedateTapped(_ sender: Any) {
         
@@ -59,9 +70,11 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //print(remainderContainerView.frame.origin.y)
-       // remainderContainerView.frame.origin.y = 100
-        print(remainderContainerView.frame.origin.y)
+        backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
+        backgroundView.backgroundColor = .black
+        backgroundView.alpha = 0.0
+        
+        view.addSubview(backgroundView)
         
     }
     
