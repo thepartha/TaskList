@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B225717C248A7DB100727DBB /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B225717B248A7DB100727DBB /* OverviewViewController.swift */; };
 		B22834C7248C564C00F2A271 /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22834C6248C564C00F2A271 /* TestTableViewController.swift */; };
+		B22834CF248D088C00F2A271 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22834CE248D088C00F2A271 /* TestView.xib */; };
+		B22834D1248D097900F2A271 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22834D0248D097900F2A271 /* TestView.swift */; };
 		B2931D8224886F5A006EBB87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2931D8124886F5A006EBB87 /* AppDelegate.swift */; };
 		B2931D8424886F5A006EBB87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2931D8324886F5A006EBB87 /* SceneDelegate.swift */; };
 		B2931D8624886F5A006EBB87 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2931D8524886F5A006EBB87 /* TaskViewController.swift */; };
@@ -28,6 +30,8 @@
 		86A9998F5D729669EB6AF1CB /* Pods-TaskList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskList.debug.xcconfig"; path = "Target Support Files/Pods-TaskList/Pods-TaskList.debug.xcconfig"; sourceTree = "<group>"; };
 		B225717B248A7DB100727DBB /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OverviewViewController.swift; path = TaskList/Controller/OverviewViewController.swift; sourceTree = SOURCE_ROOT; };
 		B22834C6248C564C00F2A271 /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestTableViewController.swift; path = TaskList/Controller/TestTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		B22834CE248D088C00F2A271 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
+		B22834D0248D097900F2A271 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		B2931D7E24886F5A006EBB87 /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2931D8124886F5A006EBB87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2931D8324886F5A006EBB87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 				B2E81CF02488AB0000E181EC /* AddTaskViewController.swift */,
 				B2931D8524886F5A006EBB87 /* TaskViewController.swift */,
 				B2931D9524887E55006EBB87 /* TaskTableViewCell.swift */,
+				B22834D0248D097900F2A271 /* TestView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			children = (
 				B2931D8724886F5A006EBB87 /* Main.storyboard */,
 				B2931D9624887E55006EBB87 /* TaskTableViewCell.xib */,
+				B22834CE248D088C00F2A271 /* TestView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -199,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22834CF248D088C00F2A271 /* TestView.xib in Resources */,
 				B2931D9824887E55006EBB87 /* TaskTableViewCell.xib in Resources */,
 				B2931D8E24886F5C006EBB87 /* LaunchScreen.storyboard in Resources */,
 				B2931D9C24899CCA006EBB87 /* GoogleService-Info.plist in Resources */,
@@ -262,6 +269,7 @@
 				B2931D8224886F5A006EBB87 /* AppDelegate.swift in Sources */,
 				B2931D8424886F5A006EBB87 /* SceneDelegate.swift in Sources */,
 				B22834C7248C564C00F2A271 /* TestTableViewController.swift in Sources */,
+				B22834D1248D097900F2A271 /* TestView.swift in Sources */,
 				B225717C248A7DB100727DBB /* OverviewViewController.swift in Sources */,
 				B2E81CED2488AA1300E181EC /* Task.swift in Sources */,
 				B2E81CEB2488A88000E181EC /* TextField-Extension.swift in Sources */,

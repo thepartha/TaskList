@@ -18,7 +18,31 @@ class AddTaskViewController: UIViewController {
     var delegate: addTaskDelegate?
     
     @IBOutlet var taskTextField: UITextField!
- 
+    @IBOutlet var reminder_icon: UIImageView!
+    @IBOutlet var reminder_label: UILabel!
+    @IBOutlet var duedate_icon: UIImageView!
+    @IBOutlet var duedate_label: UILabel!
+    
+    @IBAction func setReminderTapped(_ sender: Any) {
+        let alertController = UIAlertController.init(title: "Reminder", message: "Set Reminder", preferredStyle: .actionSheet)
+        let todayAction = UIAlertAction(title: "Today", style: .default) { (action) in
+            print(action)
+        }
+        let tomorrowAction = UIAlertAction(title: "Tomorrow", style: .default) { (action) in
+            print(action)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print(action)
+        }
+        alertController.addAction(todayAction)
+        alertController.addAction(tomorrowAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    @IBAction func setDuedateTapped(_ sender: Any) {
+        
+        
+    }
     
     @IBAction func addTask(_ sender: Any) {
         if let taskText = taskTextField.text {

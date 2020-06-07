@@ -147,9 +147,10 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
         topView.layer.cornerRadius = 26
         bottomView.layer.cornerRadius = 26
         
+
         topNavButtons = [allTasksButton,workTasksButton,personalTasksButton,otherButtonTasks]
         allTasksButton.isSelected = true
-        listIcon.image = UIImage(named: "List_Icon_active")
+        listIcon.image = UIImage(named: "List_Icon_Active")
         gridIcon.image = UIImage(named: "Grid_Icon")
         
         countByCategory()
@@ -453,8 +454,9 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: tableView.frame.size.height))
-        let headerLabel = UILabel(frame: CGRect(x: 20, y: 20, width: 300, height: 50))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
+        view.backgroundColor = UIColor.init(named: "background-color")
+        let headerLabel = UILabel(frame: CGRect(x: 20, y: 20, width: 300, height: 30))
         headerLabel.font = UIFont.systemFont(ofSize: 21, weight: .thin)
         if section == 0 {
             headerLabel.text = "Pending Tasks"
@@ -469,16 +471,30 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if let id = tasks[indexPath.row].id {
-                db.collection("tasks").document(id).delete { (error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        print("delete successfully")
-                        self.countByCategory()
+            if indexPath.section == 0 {
+                if let id = tasks[indexPath.row].id {
+                    db.collection("tasks").document(id).delete { (error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            print("delete successfully")
+                            self.countByCategory()
+                        }
+                    }
+                }
+            } else {
+                if let id = completedTasks[indexPath.row].id {
+                    db.collection("completed").document(id).delete { (error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else {
+                            print("delete successfully")
+                            self.countByCategory()
+                        }
                     }
                 }
             }
+
         }
     }
 }
