@@ -646,10 +646,10 @@
             </objects>
             <point key="canvasLocation" x="1689.8550724637682" y="158.70535714285714"/>
         </scene>
-        <!--Add Actions View Controller-->
+        <!--Reminder View Controller-->
         <scene sceneID="94W-4b-mtE">
             <objects>
-                <viewController id="cRM-SD-5ch" customClass="AddActionsViewController" customModule="TaskList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cRM-SD-5ch" customClass="ReminderViewController" customModule="TaskList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bnw-SH-Vej">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -807,7 +807,11 @@
                         <viewLayoutGuide key="safeArea" id="21T-7c-PrR"/>
                     </view>
                     <connections>
-                        <outlet property="laterTodayLabel" destination="2Px-H8-fsN" id="5R0-Du-XjG"/>
+                        <outlet property="cancelButton" destination="S1J-aP-aXd" id="6CP-ty-aIM"/>
+                        <outlet property="lateTomorrowTitleLabel" destination="TAK-Jo-pt7" id="toc-80-190"/>
+                        <outlet property="laterDateLabel" destination="2Px-H8-fsN" id="b9E-ka-NDC"/>
+                        <outlet property="laterTitleLabel" destination="D7m-V3-2Fu" id="ghD-sd-YbI"/>
+                        <outlet property="laterTomorrowDateLabel" destination="K5W-5h-qnl" id="lZu-j3-3Di"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5W-fo-up9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

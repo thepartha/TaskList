@@ -62,47 +62,68 @@ class AddTaskViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addReminderSheet" {
             print("Inside sege")
-            let vc = segue.destination as! AddActionsViewController
+            let vc = segue.destination as! ReminderViewController
             vc.delegate = self
         }
     }
+    
+    func getWeekday(day: Int) -> String {
+         switch day {
+             case 1:
+                 return "Sun"
+             case 2:
+                 return "Mon"
+             case 3:
+                 return"Tue"
+             case 4:
+                return "Wed"
+             case 5:
+                 return "Thu"
+             case 6:
+                 return "Fri"
+             case 7:
+                return "Sat"
+             default:
+                 return ""
+             }
+     }
     
 }
 
 
 extension AddTaskViewController: reminderSheetDelegate {
-    func laterToday() {
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let day = calendar.component(.day, from: date)
-        print(day)
-        if hour < 12 {
-            print("Today: \(hour + 4) AM")
-        } else if hour > 12 && hour + 4 >= 24{
-            print("Today: 12 PM")
-        } else if hour > 12 {
-            print("Today: \((hour - 22) + 4)PM")
-        }
-        
-    }
     
     func reminderDateSet(date: Date) {
-        print("date")
+        let date = date
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let day = calendar.component(.weekday, from: date)
+             let weekday = getWeekday(day: day)
+              if hour < 12 {
+                reminder_label.text = "\(weekday): \(hour + 4) AM"
+              } else if hour > 12 && hour + 4 >= 24{
+                reminder_label.text = "\(weekday): 12 PM"
+
+              } else if hour > 12 {
+                 reminder_label.text = "\(weekday): \((hour - 22) + 4)PM"
+              }
+        reminder_label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        reminder_label.textColor = UIColor.init(named: "tasks-color")
+        reminder_label.alpha = 1
+        
+        cancel()
     }
     
     func cancel() {
-        print("cancel")
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
             var currentFrame = self.remainderContainerView.frame
             currentFrame.origin.y += currentFrame.height
 
             self.remainderContainerView.frame = currentFrame
             self.backgroundView.alpha = 0
-
+            
         }) { (finished) in
             if finished {
-                print("animation completed successully")
             }
         }
     }

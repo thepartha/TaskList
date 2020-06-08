@@ -13,4 +13,5 @@ struct Task {
     var taskStatus: Bool
     var id: String?
     var category: String
+    var reminderDate: Date?
 }
