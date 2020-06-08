@@ -10,12 +10,16 @@ import UIKit
 
 protocol addTaskDelegate {
     func addTaskToTasks(taskname: String)
+    
 }
 
 class AddTaskViewController: UIViewController {
     
     var delegate: addTaskDelegate?
     
+    @IBAction func backgroundTapped(_ sender: UITapGestureRecognizer) {
+        cancel()
+    }
     @IBOutlet var taskTextField: UITextField!
     @IBOutlet var reminder_icon: UIImageView!
     @IBOutlet var reminder_label: UILabel!
@@ -29,7 +33,7 @@ class AddTaskViewController: UIViewController {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             var containerFrame = self.remainderContainerView.frame
             containerFrame.origin.y -= containerFrame.height
-            self.backgroundView.alpha = 0.2
+            self.backgroundView.alpha = 0.3
             self.remainderContainerView.frame = containerFrame
         }) { (finished) in
         }
@@ -67,12 +71,40 @@ class AddTaskViewController: UIViewController {
 
 
 extension AddTaskViewController: reminderSheetDelegate {
+    func laterToday() {
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let day = calendar.component(.day, from: date)
+        print(day)
+        if hour < 12 {
+            print("Today: \(hour + 4) AM")
+        } else if hour > 12 && hour + 4 >= 24{
+            print("Today: 12 PM")
+        } else if hour > 12 {
+            print("Today: \((hour - 22) + 4)PM")
+        }
+        
+    }
+    
     func reminderDateSet(date: Date) {
         print("date")
     }
     
     func cancel() {
-        
+        print("cancel")
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            var currentFrame = self.remainderContainerView.frame
+            currentFrame.origin.y += currentFrame.height
+
+            self.remainderContainerView.frame = currentFrame
+            self.backgroundView.alpha = 0
+
+        }) { (finished) in
+            if finished {
+                print("animation completed successully")
+            }
+        }
     }
     
     

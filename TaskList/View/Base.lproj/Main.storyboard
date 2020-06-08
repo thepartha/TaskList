@@ -483,14 +483,20 @@
                                             <constraint firstAttribute="width" constant="47" id="M2z-dg-Y2Z"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weE-U7-hP8">
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weE-U7-hP8">
                                         <rect key="frame" x="55" y="0.0" width="120" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="47" id="31i-Kf-ehc"/>
                                             <constraint firstAttribute="width" constant="120" id="k9Q-Oe-ALi"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.20392156859999999" green="0.29803921570000003" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Set Reminder">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.20392156859999999" green="0.29803921570000003" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" metaFont="system" size="17"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -573,6 +579,10 @@
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtt-iK-yVI" userLabel="BackgroundView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="izQ-KL-07w" appends="YES" id="Dua-p5-syS"/>
+                                </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fPz-CS-8sr">
                                 <rect key="frame" x="0.0" y="842" width="414" height="368"/>
@@ -628,6 +638,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24Q-of-knN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="izQ-KL-07w">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="7gA-Jv-CDy" id="JWT-SB-D65"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1689.8550724637682" y="158.70535714285714"/>
         </scene>
@@ -645,7 +660,7 @@
                                 <color key="textColor" name="default-color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKa-fb-aEV">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKa-fb-aEV">
                                 <rect key="frame" x="182" y="8" width="50" height="4"/>
                                 <color key="backgroundColor" name="default-color"/>
                                 <constraints>
@@ -753,16 +768,14 @@
                                     <action selector="laterTomorrowTapped:" destination="cRM-SD-5ch" eventType="touchUpInside" id="Hp7-aw-q8H"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVo-wb-eiB">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1J-aP-aXd">
                                 <rect key="frame" x="19" y="10" width="48" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="3ym-Je-qpI"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelButtonTapped:" destination="cRM-SD-5ch" eventType="touchUpInside" id="Mj2-6L-djc"/>
+                                    <action selector="cancelButtonTapped:" destination="cRM-SD-5ch" eventType="touchUpInside" id="2r3-Yn-JYd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -780,7 +793,6 @@
                             <constraint firstItem="ueX-Tu-hWw" firstAttribute="leading" secondItem="21T-7c-PrR" secondAttribute="leading" constant="14" id="FZj-15-d3e"/>
                             <constraint firstAttribute="trailing" secondItem="OeN-CT-Kq2" secondAttribute="trailing" constant="20" id="Lka-E1-w1V"/>
                             <constraint firstItem="7wv-BH-Wnq" firstAttribute="leading" secondItem="21T-7c-PrR" secondAttribute="leading" constant="14" id="PCF-0B-hNy"/>
-                            <constraint firstItem="kVo-wb-eiB" firstAttribute="top" secondItem="bnw-SH-Vej" secondAttribute="top" constant="10" id="Q0A-fP-qff"/>
                             <constraint firstItem="jNy-pX-wZE" firstAttribute="top" secondItem="7wv-BH-Wnq" secondAttribute="bottom" constant="14" id="Vdc-Ww-II8"/>
                             <constraint firstItem="p8s-qq-uFZ" firstAttribute="leading" secondItem="bnw-SH-Vej" secondAttribute="leading" constant="20" id="VyC-tz-crz"/>
                             <constraint firstItem="7wv-BH-Wnq" firstAttribute="top" secondItem="21T-7c-PrR" secondAttribute="top" constant="10" id="ZlX-2W-JsX"/>
@@ -788,14 +800,15 @@
                             <constraint firstItem="jNy-pX-wZE" firstAttribute="leading" secondItem="bnw-SH-Vej" secondAttribute="leading" constant="20" id="fXh-UA-def"/>
                             <constraint firstAttribute="trailing" secondItem="p8s-qq-uFZ" secondAttribute="trailing" constant="20" id="hsM-b3-qdW"/>
                             <constraint firstItem="ZKa-fb-aEV" firstAttribute="top" secondItem="bnw-SH-Vej" secondAttribute="top" constant="8" id="ibV-T6-L5r"/>
-                            <constraint firstItem="7wv-BH-Wnq" firstAttribute="top" secondItem="kVo-wb-eiB" secondAttribute="bottom" constant="14" id="j1V-1J-LKA"/>
                             <constraint firstItem="ZKa-fb-aEV" firstAttribute="centerX" secondItem="bnw-SH-Vej" secondAttribute="centerX" id="ngi-WW-cDz"/>
-                            <constraint firstItem="kVo-wb-eiB" firstAttribute="leading" secondItem="bnw-SH-Vej" secondAttribute="leading" constant="19" id="qle-lT-9G4"/>
                             <constraint firstItem="p8s-qq-uFZ" firstAttribute="top" secondItem="UAH-vf-cdP" secondAttribute="bottom" constant="15" id="vXZ-ca-yK5"/>
                             <constraint firstItem="UAH-vf-cdP" firstAttribute="top" secondItem="ZKa-fb-aEV" secondAttribute="bottom" constant="13" id="xBt-cw-zmF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="21T-7c-PrR"/>
                     </view>
+                    <connections>
+                        <outlet property="laterTodayLabel" destination="2Px-H8-fsN" id="5R0-Du-XjG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5W-fo-up9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
