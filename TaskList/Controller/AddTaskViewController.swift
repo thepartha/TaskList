@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol addTaskDelegate {
     func addTaskToTasks(taskname: String)
 }
@@ -22,43 +21,22 @@ class AddTaskViewController: UIViewController {
     @IBOutlet var reminder_label: UILabel!
     @IBOutlet var duedate_icon: UIImageView!
     @IBOutlet var duedate_label: UILabel!
-    var backgroundView: UIView!
     @IBOutlet var remainderContainerView: UIView!
+    @IBOutlet var backgroundView: UIView!
     
     @IBAction func setReminderTapped(_ sender: Any) {
-        //self.view.bringSubviewToFront(self.remainderContainerView)
-        //self.backgroundView.alpha = 0.2
-
+     self.view.bringSubviewToFront(self.remainderContainerView)
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             var containerFrame = self.remainderContainerView.frame
             containerFrame.origin.y -= containerFrame.height
-            
-
+            self.backgroundView.alpha = 0.2
             self.remainderContainerView.frame = containerFrame
         }) { (finished) in
-            print("animation completed")
         }
-//        func openNapkins() {
-//          UIView.animate(withDuration: 1.0, delay: 1.2, options: .curveEaseOut, animations: {
-//            var fabricTopFrame = self.fabricTop.frame
-//            fabricTopFrame.origin.y -= fabricTopFrame.size.height
-//            
-//            var fabricBottomFrame = self.fabricBottom.frame
-//            fabricBottomFrame.origin.y += fabricBottomFrame.size.height
-//            
-//            self.fabricTop.frame = fabricTopFrame
-//            self.fabricBottom.frame = fabricBottomFrame
-//          }, completion: { finished in
-//            print("Napkins opened!")
-//          })
-//          
-//        }
-//        
-      //  remainderContainerView.frame.origin.y -= remainderContainerView.frame.height
     }
+    
     @IBAction func setDuedateTapped(_ sender: Any) {
-        
-        
+
     }
     
     @IBAction func addTask(_ sender: Any) {
@@ -70,18 +48,32 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-        backgroundView.backgroundColor = .black
-        backgroundView.alpha = 0.0
-        
-        view.addSubview(backgroundView)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         remainderContainerView.frame.origin.y = 100
+        // remainderContainerView.frame.origin.y = 100
     }
         
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addReminderSheet" {
+            print("Inside sege")
+            let vc = segue.destination as! AddActionsViewController
+            vc.delegate = self
+        }
+    }
+    
+}
 
+
+extension AddTaskViewController: reminderSheetDelegate {
+    func reminderDateSet(date: Date) {
+        print("date")
+    }
+    
+    func cancel() {
+        
+    }
+    
     
 }

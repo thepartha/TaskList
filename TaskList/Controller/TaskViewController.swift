@@ -5,6 +5,10 @@
 //  Created by Partha Sarathy on 6/3/20.
 //  Copyright © 2020 Partha Sarathy. All rights reserved.
 //
+//layerMaxXMaxYCorner - bottom right corner
+//layerMaxXMinYCorner - top right corner
+//layerMinXMaxYCorner - bottom left corner
+//layerMinXMinYCorner - top left corner
 
 import UIKit
 import Firebase
@@ -143,11 +147,16 @@ class TaskViewController: UIViewController, taskTableViewCellDelegate {
         currentCollection = "tasks"
         loadTasks(collection: currentCollection)
         
+        //layerMaxXMaxYCorner - bottom right corner
+        //layerMaxXMinYCorner - top right corner
+        //layerMinXMaxYCorner - bottom left corner
+        //layerMinXMinYCorner - top left corner
+        
         tableView.register(UINib(nibName: "TaskTableViewCell", bundle: nil), forCellReuseIdentifier: "taskCell")
         topView.layer.cornerRadius = 26
         bottomView.layer.cornerRadius = 26
-        
-
+        topView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        bottomView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         topNavButtons = [allTasksButton,workTasksButton,personalTasksButton,otherButtonTasks]
         allTasksButton.isSelected = true
         listIcon.image = UIImage(named: "List_Icon_Active")
