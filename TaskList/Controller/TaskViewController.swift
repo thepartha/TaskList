@@ -510,8 +510,9 @@ extension TaskViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 extension TaskViewController: addTaskDelegate {
-    func addTaskToTasks(taskname: String) {
-        db.collection("tasks").addDocument(data: ["taskTitle" : taskname, "taskDate" : Date().timeIntervalSince1970, "taskStatus" : false, "category" : currentCollection]) { (error) in
+    
+    func addTaskToTasks(taskname: String, reminderDate: Date) {
+        db.collection("tasks").addDocument(data: ["taskTitle" : taskname, "taskDate" : Date().timeIntervalSince1970, "taskStatus" : false, "category" : currentCollection, "reminderDate": reminderDate]) { (error) in
             if let error = error {
                 print(error.localizedDescription)
             } else {

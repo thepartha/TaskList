@@ -9,7 +9,7 @@
 import UIKit
 
 protocol addTaskDelegate {
-    func addTaskToTasks(taskname: String)
+    func addTaskToTasks(taskname: String, reminderDate: Date)
     
 }
 
@@ -28,6 +28,7 @@ class AddTaskViewController: UIViewController {
     @IBOutlet var remainderContainerView: UIView!
     @IBOutlet var backgroundView: UIView!
     
+    var reminderDate: Date?
     @IBAction func setReminderTapped(_ sender: Any) {
      self.view.bringSubviewToFront(self.remainderContainerView)
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
@@ -44,8 +45,8 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func addTask(_ sender: Any) {
-        if let taskText = taskTextField.text {
-            delegate?.addTaskToTasks(taskname: taskText)
+        if let taskText = taskTextField.text, let reminderDate = reminderDate {
+            delegate?.addTaskToTasks(taskname: taskText, reminderDate: reminderDate)
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -92,6 +93,16 @@ class AddTaskViewController: UIViewController {
 
 
 extension AddTaskViewController: reminderSheetDelegate {
+    func removeReminderDate() {
+        reminderDate = nil
+        reminder_label.text = "Set Reminder"
+        reminder_label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        reminder_label.textColor = UIColor.init(named: "default-color")
+        reminder_label.alpha = 0.5
+        reminder_icon.image = UIImage(named: "reminder_notset")
+        cancel()
+    }
+    
     
     func reminderDateSet(date: Date) {
         let date = date
@@ -102,15 +113,14 @@ extension AddTaskViewController: reminderSheetDelegate {
               if hour < 12 {
                 reminder_label.text = "\(weekday): \(hour + 4) AM"
               } else if hour > 12 && hour + 4 >= 24{
-                reminder_label.text = "\(weekday): 12 PM"
-
+                reminder_label.text = "\(weekday): 12 AM"
               } else if hour > 12 {
                  reminder_label.text = "\(weekday): \((hour - 22) + 4)PM"
               }
         reminder_label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         reminder_label.textColor = UIColor.init(named: "tasks-color")
         reminder_label.alpha = 1
-        
+        reminder_icon.image = UIImage(named: "reminder_set")
         cancel()
     }
     

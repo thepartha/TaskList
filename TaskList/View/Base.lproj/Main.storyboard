@@ -8,6 +8,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Date View Controller-->
+        <scene sceneID="FGR-p0-UHW">
+            <objects>
+                <viewController id="bt6-Kh-WRj" customClass="DateViewController" customModule="TaskList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y6S-l7-nO2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="JrF-KL-VCO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q2X-qm-SkE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-920" y="-347"/>
+        </scene>
         <!--Overview View Controller-->
         <scene sceneID="HpU-xt-xHQ">
             <objects>
@@ -680,7 +695,7 @@
                                         <color key="textColor" name="default-color"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun 8:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Px-H8-fsN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun 8:00 PM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Px-H8-fsN">
                                         <rect key="frame" x="116.66666666666666" y="0.0" width="257.33333333333337" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <color key="textColor" name="default-color"/>
@@ -737,9 +752,10 @@
                                     <action selector="dateControl:" destination="cRM-SD-5ch" eventType="valueChanged" id="uLA-sd-qnH"/>
                                 </connections>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeN-CT-Kq2">
-                                <rect key="frame" x="364" y="10" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeN-CT-Kq2">
+                                <rect key="frame" x="294" y="10" width="100" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="1Jk-Mn-tl1"/>
                                     <constraint firstAttribute="height" constant="30" id="6qS-t4-rC0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -747,7 +763,7 @@
                                     <color key="titleColor" name="tasks-color"/>
                                 </state>
                                 <connections>
-                                    <action selector="setDate:" destination="cRM-SD-5ch" eventType="touchUpInside" id="I9F-Cp-fnW"/>
+                                    <action selector="primaryButtonTapped:" destination="cRM-SD-5ch" eventType="touchUpInside" id="aHZ-hy-Y6W"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wv-BH-Wnq">
@@ -769,8 +785,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S1J-aP-aXd">
-                                <rect key="frame" x="19" y="10" width="48" height="30"/>
+                                <rect key="frame" x="19" y="10" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.1843137255" green="0.56862745100000001" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -812,6 +830,7 @@
                         <outlet property="laterDateLabel" destination="2Px-H8-fsN" id="b9E-ka-NDC"/>
                         <outlet property="laterTitleLabel" destination="D7m-V3-2Fu" id="ghD-sd-YbI"/>
                         <outlet property="laterTomorrowDateLabel" destination="K5W-5h-qnl" id="lZu-j3-3Di"/>
+                        <outlet property="primaryButton" destination="OeN-CT-Kq2" id="7r2-Fj-Ose"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D5W-fo-up9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -819,6 +838,9 @@
             <point key="canvasLocation" x="2415.9420289855075" y="-452.00892857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8io-ul-h1z"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="AddIcon" width="46" height="46"/>
         <image name="Grid_Icon" width="27" height="27"/>

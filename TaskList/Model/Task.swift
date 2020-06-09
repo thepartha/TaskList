@@ -14,4 +14,5 @@ struct Task {
     var id: String?
     var category: String
     var reminderDate: Date?
+    var reminderSetFor: String?
 }
